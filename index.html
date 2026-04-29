@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedEquip Store | Medical Devices & Hospital Equipment</title>
+  <meta name="description" content="A comprehensive one-page medical devices and hospital equipment store website." />
+  <style>
+    :root{
+      --primary:#0b6f8f;--primary-dark:#06495e;--accent:#10b981;--bg:#f5f8fb;
+      --text:#102331;--muted:#627282;--card:#fff;--border:#e5edf3;--gold:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    .topbar{background:#062d3b;color:#e8fbff;font-size:14px}
+    .topbar .container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 0}
+    header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
+    .logo{display:flex;gap:10px;align-items:center;font-size:24px;font-weight:900;color:var(--primary)}
+    .logo span:first-child{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:grid;place-items:center}
+    .menu{display:flex;gap:18px;font-weight:700}
+    .menu a:hover{color:var(--primary)}
+    .btn{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:12px;padding:12px 18px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}
+    .btn:hover{background:var(--primary-dark)}
+    .btn.light{background:#fff;color:var(--primary);border:1px solid var(--border)}
+    .btn.secondary{background:#e8f7fb;color:var(--primary)}
+    .hero{background:linear-gradient(100deg,rgba(6,45,59,.96),rgba(11,111,143,.82)),url('https://images.unsplash.com/photo-1581093458791-9d09a5f22243?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;color:#fff;padding:82px 0}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+    .badge{display:inline-flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;font-weight:800}
+    h1{font-size:clamp(36px,5vw,62px);line-height:1.05;margin:18px 0}
+    h2{font-size:34px;margin:0 0 8px}
+    h3{margin:10px 0 7px}
+    .hero p{font-size:18px;color:#e8fbff}
+    .quick-card{background:rgba(255,255,255,.96);color:var(--text);border-radius:28px;padding:24px;box-shadow:0 25px 60px rgba(0,0,0,.2)}
+    input,select,textarea{width:100%;padding:13px;border:1px solid var(--border);border-radius:12px;font:inherit;background:#fff}
+    textarea{min-height:120px;resize:vertical}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    section{padding:64px 0}
+    .section-title{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}
+    .section-title p{color:var(--muted);max-width:680px;margin:0}
+    .grid{display:grid;gap:20px}
+    .categories{grid-template-columns:repeat(4,1fr)}
+    .products{grid-template-columns:repeat(4,1fr)}
+    .features,.steps,.testimonials{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 10px 25px rgba(12,44,62,.06)}
+    .icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:#e8f7fb;color:var(--primary);font-size:26px}
+    .card p{color:var(--muted)}
+    .product{padding:0;overflow:hidden}
+    .product-img{height:180px;background:#eef8fb;display:grid;place-items:center;font-size:64px}
+    .product-body{padding:18px}
+    .tag{display:inline-flex;padding:5px 10px;border-radius:999px;background:#ecfdf5;color:#047857;font-weight:800;font-size:12px}
+    .price{display:flex;justify-content:space-between;align-items:center;margin-top:13px}
+    .price strong{font-size:20px;color:var(--primary)}
+    .banner{background:linear-gradient(135deg,#07384a,#0b6f8f);color:white;border-radius:30px;padding:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+    .banner p{color:#def8ff}
+    .filters{display:grid;grid-template-columns:1fr 220px 220px;gap:12px;margin-bottom:20px}
+    .about{background:#fff}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden}
+    th,td{padding:13px;border-bottom:1px solid var(--border);text-align:left}
+    th{background:#eef8fb}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .notice{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:14px;border-radius:14px}
+    .cart-item{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;margin-bottom:12px}
+    .mini{width:70px;height:70px;border-radius:16px;background:#eef8fb;display:grid;place-items:center;font-size:30px}
+    footer{background:#062d3b;color:#d8eef5;padding:48px 0 22px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+    footer h3,footer h4{color:#fff}
+    footer a{display:block;color:#d8eef5;margin:7px 0}
+    .copy{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;padding-top:18px;color:#a7cbd5}
+    @media(max-width:900px){
+      .hero-grid,.split,.banner{grid-template-columns:1fr}
+      .categories,.products,.features,.steps,.testimonials,.footer-grid{grid-template-columns:1fr 1fr}
+      .menu{display:none}
+      .filters,.form-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){.categories,.products,.features,.steps,.testimonials,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>Medical Equipment • Hospital Supplies • Homecare Devices</div>
+      <div>Call: +964 786 633 7028 | sales@medequipstore.com</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#home"><span>M+</span><span>MedEquip Store</span></a>
+        <div class="menu">
+          <a href="#categories">Categories</a>
+          <a href="#products">Products</a>
+          <a href="#services">Services</a>
+          <a href="#cart">Cart</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="btn secondary" href="#contact">Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Trusted Medical Devices Marketplace</span>
+          <h1>Hospital equipment, medical devices, and homecare solutions in one platform.</h1>
+          <p>Browse ICU devices, operation theatre equipment, diagnostic machines, sterilization units, furniture, disposables, accessories, and homecare products.</p>
+          <a class="btn" href="#products">View Products</a>
+          <a class="btn light" href="#contact">Get Bulk Quotation</a>
+        </div>
+        <div class="quick-card">
+          <h2>Quick Product Finder</h2>
+          <p>Use this area for customer inquiry and fast product selection.</p>
+          <div class="form-grid">
+            <input placeholder="Product name: ECG, monitor, bed..." />
+            <select><option>All Categories</option><option>ICU & Critical Care</option><option>Homecare</option><option>OT Equipment</option></select>
+            <select><option>Budget Range</option><option>Under $500</option><option>$500–$2,000</option><option>Above $2,000</option></select>
+            <select><option>Use Type</option><option>Hospital</option><option>Clinic</option><option>Homecare</option></select>
+          </div><br>
+          <a class="btn" href="#products">Search Catalog</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-title">
+          <div><h2>Main Categories</h2><p>Comprehensive categories for hospitals, clinics, laboratories, and homecare suppliers.</p></div>
+        </div>
+        <div class="grid categories">
+          <div class="card"><div class="icon">🫀</div><h3>ICU & Critical Care</h3><p>Patient monitors, ventilators, infusion pumps, syringe pumps, AED, and emergency systems.</p></div>
+          <div class="card"><div class="icon">🏥</div><h3>Operation Theatre</h3><p>OT lights, tables, anesthesia machines, suction units, and surgical tools.</p></div>
+          <div class="card"><div class="icon">🔬</div><h3>Diagnostic & Imaging</h3><p>ECG, ultrasound, X-ray accessories, spirometry, and diagnostic devices.</p></div>
+          <div class="card"><div class="icon">♿</div><h3>Homecare Devices</h3><p>Oxygen concentrators, CPAP, nebulizers, wheelchairs, and patient aids.</p></div>
+          <div class="card"><div class="icon">♨️</div><h3>Sterilization</h3><p>Autoclaves, UV disinfection, sterilizers, and infection control supplies.</p></div>
+          <div class="card"><div class="icon">🛏️</div><h3>Hospital Furniture</h3><p>Hospital beds, stretchers, trolleys, cabinets, and patient room furniture.</p></div>
+          <div class="card"><div class="icon">🧤</div><h3>Consumables</h3><p>Gloves, masks, syringes, tubes, dressings, and medical disposables.</p></div>
+          <div class="card"><div class="icon">🧰</div><h3>Biomedical Accessories</h3><p>ECG cables, sensors, batteries, cuffs, probes, and spare parts.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="banner">
+          <div>
+            <h2>Supply solutions for hospitals, clinics, pharmacies, and homecare providers.</h2>
+            <p>Use this one-page website for retail products, quotation requests, bulk procurement, and company presentation.</p>
+          </div>
+          <a class="btn light" href="#contact">Start Procurement Request</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-title">
+          <div><h2>Product Catalog</h2><p>Search and filter sample medical products. Prices are placeholders and can be replaced with your real data.</p></div>
+        </div>
+        <div class="filters">
+          <input id="searchInput" placeholder="Search products, category, brand..." />
+          <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option>ICU & Critical Care</option><option>Homecare</option><option>Hospital Furniture</option>
+            <option>Diagnostic & Imaging</option><option>OT Equipment</option><option>Sterilization</option><option>Emergency</option>
+          </select>
+          <select id="sortFilter">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+        <div class="grid products" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section id="services" class="about">
+      <div class="container">
+        <div class="section-title">
+          <div><h2>Services & Support</h2><p>A professional medical store should not only sell devices; it should support procurement, installation, training, and after-sales service.</p></div>
+        </div>
+        <div class="grid features">
+          <div class="card"><div class="icon">📄</div><h3>Formal Quotations</h3><p>Prepare offers for hospitals, clinics, tenders, and bulk purchase requests.</p></div>
+          <div class="card"><div class="icon">🚚</div><h3>Delivery & Installation</h3><p>Coordinate delivery, installation, commissioning, and site readiness checks.</p></div>
+          <div class="card"><div class="icon">🛠️</div><h3>Warranty & Maintenance</h3><p>Support warranty follow-up, spare parts, calibration, and maintenance requests.</p></div>
+        </div><br>
+        <table>
+          <tr><th>Service</th><th>Description</th></tr>
+          <tr><td>Hospital Procurement</td><td>Bulk supply and quotation requests for departments and projects.</td></tr>
+          <tr><td>Clinic Setup</td><td>Equipment packages for private clinics and diagnostic centers.</td></tr>
+          <tr><td>Homecare Supply</td><td>Portable and user-friendly equipment for patient care at home.</td></tr>
+          <tr><td>Technical Support</td><td>Installation, warranty follow-up, spare parts, and maintenance coordination.</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <div><h2>How Ordering Works</h2><p>A simple workflow for medical equipment inquiries and supply.</p></div>
+        </div>
+        <div class="grid steps">
+          <div class="card"><div class="icon">1</div><h3>Browse</h3><p>Select products by category, brand, and application.</p></div>
+          <div class="card"><div class="icon">2</div><h3>Add to Cart</h3><p>Add selected items to prepare your quotation list.</p></div>
+          <div class="card"><div class="icon">3</div><h3>Confirm Specs</h3><p>Review datasheets, warranty, delivery, and training needs.</p></div>
+          <div class="card"><div class="icon">4</div><h3>Deliver</h3><p>Arrange delivery, installation, commissioning, and after-sales support.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart" class="about">
+      <div class="container split">
+        <div>
+          <h2>Quotation Cart</h2>
+          <p class="notice">This is a front-end demo cart saved in the browser. For a real store, connect it to a database, payment gateway, and admin dashboard.</p>
+          <div id="cartItems"></div>
+        </div>
+        <div class="card">
+          <h2>Summary</h2>
+          <p>Subtotal: <strong id="subtotal">$0</strong></p>
+          <p>Estimated VAT 5%: <strong id="vat">$0</strong></p>
+          <h3>Total: <span id="grand">$0</span></h3>
+          <button class="btn" onclick="document.querySelector('#contact').scrollIntoView()">Request Formal Quotation</button>
+          <button class="btn secondary" onclick="clearCart()">Clear Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container split">
+        <form class="card" onsubmit="alert('Demo form only. Connect it to EmailJS, Formspree, WhatsApp, PHP, or backend API.');return false;">
+          <h2>Contact & Quotation Form</h2>
+          <input placeholder="Full name" required><br><br>
+          <input placeholder="Company / Hospital / Clinic"><br><br>
+          <input placeholder="Phone number" required><br><br>
+          <input placeholder="Email address"><br><br>
+          <select><option>Inquiry Type</option><option>Single Product</option><option>Bulk Quotation</option><option>Clinic Setup</option><option>Technical Support</option></select><br><br>
+          <textarea placeholder="Write product names, quantities, delivery city, and required specifications."></textarea><br><br>
+          <button class="btn">Send Request</button>
+        </form>
+        <div class="card">
+          <h2>Business Information</h2>
+          <p><strong>Phone:</strong> +964 786 633 7028</p>
+          <p><strong>Email:</strong> sales@medequipstore.com</p>
+          <p><strong>Address:</strong> Iraq</p>
+          <h3>Business Hours</h3>
+          <p>Saturday–Thursday: 9:00 AM – 6:00 PM</p>
+          <h3>Recommended real integrations</h3>
+          <p>WhatsApp order button, Google Sheets inquiry storage, EmailJS/Formspree contact form, online payment, admin product dashboard.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><h3>MedEquip Store</h3><p>A comprehensive one-page medical devices and hospital equipment website template.</p></div>
+      <div><h4>Categories</h4><a href="#products">ICU Devices</a><a href="#products">OT Equipment</a><a href="#products">Homecare</a><a href="#products">Consumables</a></div>
+      <div><h4>Services</h4><a href="#services">Procurement</a><a href="#services">Installation</a><a href="#services">Warranty</a><a href="#contact">Quotation</a></div>
+      <div><h4>Contact</h4><a>+964 786 633 7028</a><a>sales@medequipstore.com</a><a>Iraq</a></div>
+    </div>
+    <div class="container copy">© 2026 MedEquip Store. One-page demo template. Replace products, prices, and policies before commercial use.</div>
+  </footer>
+
+  <script>
+    const products=[
+      {id:1,name:"ICU Patient Monitor",cat:"ICU & Critical Care",price:1850,icon:"🖥️",brand:"MediCore",tag:"Top Seller"},
+      {id:2,name:"Portable Oxygen Concentrator",cat:"Homecare",price:920,icon:"🫁",brand:"Oxylife",tag:"Homecare"},
+      {id:3,name:"Electric Hospital Bed",cat:"Hospital Furniture",price:1450,icon:"🛏️",brand:"CareMotion",tag:"New"},
+      {id:4,name:"Digital ECG Machine",cat:"Diagnostic & Imaging",price:780,icon:"📈",brand:"CardioPlus",tag:"Offer"},
+      {id:5,name:"Syringe Pump",cat:"ICU & Critical Care",price:540,icon:"💉",brand:"InfuSmart",tag:"Essential"},
+      {id:6,name:"Operation Theatre Light",cat:"OT Equipment",price:2600,icon:"💡",brand:"SurgiLux",tag:"Premium"},
+      {id:7,name:"Autoclave Sterilizer",cat:"Sterilization",price:1180,icon:"♨️",brand:"Sterix",tag:"Clinic"},
+      {id:8,name:"Ultrasound Scanner",cat:"Diagnostic & Imaging",price:5400,icon:"🔬",brand:"SonoVision",tag:"Advanced"},
+      {id:9,name:"Wheelchair Standard",cat:"Homecare",price:165,icon:"♿",brand:"MobilityOne",tag:"Budget"},
+      {id:10,name:"Defibrillator AED",cat:"Emergency",price:1320,icon:"⚡",brand:"LifePulse",tag:"Emergency"},
+      {id:11,name:"Anesthesia Machine",cat:"OT Equipment",price:6900,icon:"🫧",brand:"AneSure",tag:"Hospital"},
+      {id:12,name:"Nebulizer Machine",cat:"Homecare",price:68,icon:"🌫️",brand:"BreatheEasy",tag:"Fast Sale"}
+    ];
+    const money=v=>"$"+Number(v).toLocaleString();
+    function card(p){
+      return `<article class="card product">
+        <div class="product-img">${p.icon}</div>
+        <div class="product-body">
+          <span class="tag">${p.tag}</span>
+          <h3>${p.name}</h3>
+          <p>${p.cat} • ${p.brand}</p>
+          <div class="price"><strong>${money(p.price)}</strong><button class="btn secondary" onclick="addToCart(${p.id})">Add</button></div>
+        </div>
+      </article>`;
+    }
+    function renderProducts(){
+      const q=(document.getElementById("searchInput").value||"").toLowerCase();
+      const cat=document.getElementById("categoryFilter").value;
+      const sort=document.getElementById("sortFilter").value;
+      let list=products.filter(p=>(cat==="All"||p.cat===cat)&&(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)));
+      if(sort==="low") list.sort((a,b)=>a.price-b.price);
+      if(sort==="high") list.sort((a,b)=>b.price-a.price);
+      document.getElementById("productGrid").innerHTML=list.map(card).join("")||`<div class="card">No products found.</div>`;
+    }
+    function getCart(){return JSON.parse(localStorage.getItem("medequipCart")||"[]")}
+    function saveCart(cart){localStorage.setItem("medequipCart",JSON.stringify(cart));renderCart()}
+    function addToCart(id){
+      const cart=getCart(); const item=cart.find(x=>x.id===id);
+      item?item.qty++:cart.push({id,qty:1}); saveCart(cart);
+    }
+    function clearCart(){saveCart([])}
+    function renderCart(){
+      const cart=getCart(); let subtotal=0;
+      document.getElementById("cartItems").innerHTML=cart.map(item=>{
+        const p=products.find(x=>x.id===item.id); const total=p.price*item.qty; subtotal+=total;
+        return `<div class="card cart-item"><div class="mini">${p.icon}</div><div><h3>${p.name}</h3><p>Qty: ${item.qty} • ${p.cat}</p></div><strong>${money(total)}</strong></div>`;
+      }).join("") || `<div class="card">Your quotation cart is empty. Add products from the catalog.</div>`;
+      document.getElementById("subtotal").textContent=money(subtotal);
+      document.getElementById("vat").textContent=money(subtotal*0.05);
+      document.getElementById("grand").textContent=money(subtotal*1.05);
+    }
+    document.addEventListener("DOMContentLoaded",()=>{
+      renderProducts();renderCart();
+      ["searchInput","categoryFilter","sortFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderProducts));
+    });
+  </script>
+</body>
+</html>
